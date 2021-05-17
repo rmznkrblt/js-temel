@@ -24,23 +24,22 @@
         Merhaba, <script type="text/javascript">var kelime=prompt("İsminizi giriniz","lütfen sadece kelime giriniz..")
   document.write(kelime)</script> <strong><span id="myName"></span></strong>! Hoş geldin!
       </div>
-      <div id="myClock" class="clock" onload="showTime()"> <script>
-   var suan = new Date();
-
-               var dsaat = suan.getHours();
-
-               var ddak = suan.getMinutes();
-
-               var sny = suan.getSeconds();
-
-               saaat = dsaat + ':' + ((ddak<10) ? '0' : '') + ddak + ':' + ((sny<10) ? '0' : '') + sny ;
-
-               //saat, dakika, saniye değerlerini birleştirdik
-
-               myClock.innerHTML = saaat // div id'li nesneye taşıdık.
-
-               setTimeout("digitalsaat()", 1000); // saniyede bir güncelle
-</script></div>
+      <div id="myClock" class="clock" onload="showTime()">
+      	
+      	<script type="text/javascript">
+      		function saat() {
+   			window.setTimeout( "saat()", 1000 );
+   			zaman = new Date();
+   			gunler = ["Pazar", "Pazartesi", "Salı", "Çarşamba", "Perşembe", "Cuma", "Cumartesi"];
+   			anliksaat=zaman.toLocaleTimeString();
+   			if(document.all || document.getElementById){
+      		document.getElementById("myClock").innerHTML = anliksaat.toString()+" "+gunler[zaman.getDay()];
+   			}else{   
+      		self.status = anliksaat.toString();
+   			}}
+			saat() 
+		</script>
+      </div>
       <div class="text2 text-center">
         tarihinde
         <strong>Kodluyoruz Frontend Web Development Patikası</strong>'nın
